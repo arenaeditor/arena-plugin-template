@@ -1,0 +1,21 @@
+{
+  "name": "demo",
+  "pluginId": "official.arena.demo",
+  "author": "Arena",
+  "description": "Arena 官方示例插件",
+  "version": "0.0.1",
+  "main": "app/index.js",
+  "target": 3,
+  "plugins": [
+    {
+      "name": "demo",
+      "export": "demo",
+      "icon": "app/static/icon/demo.png",
+      "label": "示例插件",
+      "thumb": "app/static/thumb/demo.jpg"
+    }
+  ],
+  "shouldProvide": [
+    "vue@platform"
+  ]
+}

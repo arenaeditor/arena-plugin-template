@@ -1,0 +1,20 @@
+{
+  "name": "arena-demo-plugin",
+  "version": "0.0.1",
+  "author": "Arena",
+  "description": "A demo for arena plugin",
+  "scripts": {
+    "dev": "arena-plugin dev",
+    "eslint": "./node_modules/.bin/eslint app/**/*.js app/**/*.jsx",
+    "precommit": "npm run lint",
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx app --fix"
+  },
+  "dependencies": {
+    "arena-types": "^0.0.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.2.2",
+    "eslint-plugin-react": "^7.14.3"
+  }
+}
