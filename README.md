@@ -8,8 +8,13 @@ export default class Base extends ArenaPluginDOM {
 
   propWillUpdate() {}
 
+  // 新增：主题改变
+  onThemeChange() {
+    // console.log(this.$arena.theme);
+  }
+
   // 新增：编辑状态聚焦
-  onfocus() {}
+  onFocus() {}
 
   onResizeEnd() {}
 }
@@ -50,7 +55,7 @@ export {
 }
 ```
 
-### 插件调用配置面板arena-jsx语法说明
+### 插件调用配置面板jsx语法说明
 
 #### 支持类式组件和函数式组件
 
@@ -146,7 +151,7 @@ export default function demoChart(props) {
 ⚠️面板调用方式：
 
 ```javascript
-import demoChart from '../panel.arena.jsx';
+import demoChart from '../panel.jsx';
 
 export default class Chart extends ArenaPluginDOM {
   static panel() {
@@ -177,7 +182,6 @@ export default class Chart extends ArenaPluginDOM {
     minimum: 0,
     maximum: 100,
   }}
-  toFixed="2" // 保留的小数长度，默认为0，可设置为'auto'则不限制小数长度
   unit="px" // 单位
   label="123" // 组件下方小标签，若无可不写此参数
 />
@@ -211,8 +215,8 @@ export default class Chart extends ArenaPluginDOM {
   value={{
     texture: {　
       type: 'color',
-      color: 'rgba(0, 0, 0)',
-      value: 'rgba(0, 0, 0)'
+      color: 'rgba(0, 0, 0, 1)',
+      value: 'rgba(0, 0, 0, 1)'
     }
   }}
   label="边框" // 组件下方小标签，若无可不写此参数
@@ -258,6 +262,12 @@ export default class Chart extends ArenaPluginDOM {
 >
 </layout>
 ```
++ switch ：开关组件
+```javascript
+<switch bind="bindname" value={true}/>  //值为布尔值
+```
+
+**⚠️注意：以下所有折叠面板里均要配置控件,不可为空**
 
 + collapse：普通折叠面板组件
 
@@ -265,6 +275,7 @@ export default class Chart extends ArenaPluginDOM {
 <collapse
   name="柱图" // 折叠面板标题
 >
+  {/* ...配置 */}
 </collapse>
 ```
 
@@ -276,6 +287,7 @@ export default class Chart extends ArenaPluginDOM {
   bind="bindname" // 必填，绑定状态变量名称，数据改变时可在$arena.data中取得
   value={true} // 状态默认值
 >
+  {/* ...配置 */}
 </switchcollapse>
 ```
 
@@ -284,9 +296,12 @@ export default class Chart extends ArenaPluginDOM {
 ```javascript
 <tabcollapse
   title="折线样式" // 折叠面板标题
-  bind="bindname" // 必填，绑定变量名称，数据改变时可在$arena.data中取得
+  bind="chartSeries" // 必填，名称固定为chartSeries，数据改变时可在$arena.data中取得
 >
-  <tab>
+  <tab
+    type="bar" // 图表的类型
+    label="柱图" // 图表的中文
+  >
     <input
       key="barWidth"
       value="123"
@@ -302,6 +317,29 @@ export default class Chart extends ArenaPluginDOM {
   </tab>
 </tabcollapse>
 ```
+> 特殊说明: 如果图表中的图类型大于一,可以使用下面的方式
+
+> 编辑器会把所有tab的type类型去重，如果大于等于2的话，添加系列(点击+号)会出现下拉，可以选择想要添加的图类型,下拉的内容就是去重后的type类型
+
+```javascript
+<tabcollapse
+  title="折线样式" 
+  bind="bindname"
+>
+  <tab
+    type="bar" 
+    label="柱图"
+  >
+    {/* ...配置 */}
+  </tab>
+  <tab
+    type="line"
+    label="折线"
+  >
+    {/* ...配置 */}
+  </tab>
+</tabcollapse>
+```
 
 + checkboxcollapse：内容为checkbox的折叠面板组件
 
@@ -314,10 +352,11 @@ export default class Chart extends ArenaPluginDOM {
       checkboxCount: 5 // 全部可选项目数量
   }}
 >
+  {/* ...配置 */}
 </checkboxcollapse>
 ```
 
-#### jsx语法中的条件判断
+#### jsx中的条件判断
 
 + 使用三目运算符
 
@@ -451,7 +490,22 @@ render() {
 
 这样，三个input会被渲染到BasePanel组件的‘children位置'
 
+
 #### arena-jsx事件
+
+为插件面板调用的所有组件提供onChange事件，拥有bind属性的组件状态发生改变时触发，可接收到一个对象格式的参数
+
+```javascript
+{ 
+  $val, // 组件当前值
+  $changeProps, // 函数，可改变所有拥有bind属性的组件的任意props
+  $changeVal // 函数，可改变所有拥有bind属性的组件的value
+}
+```
+
+⚠️注意：tabcollapse组件内部组件暂不支持事件
+
+示例：
 
 ```javascript
 ...
