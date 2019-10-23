@@ -17,9 +17,8 @@ export default class Demo extends ArenaPluginDOM {
     this.dom.innerText = this.$arena.data.bindDemoInput;
   }
 
-  onResizeEnd() {
-  }
+  onResizeEnd() {}
   
-  onFocus() {
-  }
+  // 新增：编辑状态聚焦
+  onFocus() {}
 }

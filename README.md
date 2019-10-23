@@ -35,15 +35,15 @@ export {
 
 ```javascript
 {
-  "name": "echarts",
-  "pluginId": "official.arena.echarts",
-  "author": "Arena",
-  "description": "Arena 官方echarts插件图表插件",
-  "version": "0.0.6",
-  "main": "app/index.js",
-  "target": 3,
-  "category": "charts",
-  "plugins": [
+  "name": "", // 插件名称
+  "pluginId": "", // 插件id
+  "author": "", // 插件作者
+  "description": "" // 插件描述
+  "version": "0.0.1", // 插件版本
+  "main": "app/index.js", // 插件入口文件
+  "target": 3, // 插件版本（过度完成将废弃）
+  "category": "charts", // 可选，为插件注册分类
+  "plugins": [ // 插件内容
     {
       "name": "基础柱形图",
       "export": "baseBar",
