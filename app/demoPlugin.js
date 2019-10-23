@@ -8,6 +8,7 @@ export default class Demo extends ArenaPluginDOM {
   
   onMounted() {
     this.dom = document.createElement('p');
+    this.dom.style.color = 'red';
     this.$arena.dom.appendChild(this.dom);
     this.propWillUpdate();
   }
