@@ -24,13 +24,17 @@ export default class DemoPanel {
           </layout>
         </div>
         <div id="ac-interactive">
-          <datacollapse name="组件数据" bind="series" value={[
-            ['类目1', 100],
-            ['类目2', 80],
-            ['类目3', 60],
-            ['类目4', 40],
-            ['类目5', 20],
-          ]}/>
+          <datacollapse 
+            name="组件数据" 
+            bind="series" 
+            value={[
+              ['类目1', 100],
+              ['类目2', 80],
+              ['类目3', 60],
+              ['类目4', 40],
+              ['类目5', 20],
+            ]}
+          />
         </div>
       </div>
     );
