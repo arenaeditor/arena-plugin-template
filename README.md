@@ -269,6 +269,8 @@ export default class Chart extends ArenaPluginDOM {
 
 **⚠️注意：以下所有折叠面板里均要配置控件,不可为空**
 
+tip：内部的任意类型折叠面板可以添加`isChildren={true}`实现缩进
+
 + collapse：普通折叠面板组件
 
 ```javascript
@@ -522,6 +524,7 @@ demoHandle({ $val, $changeProps, $changeVal }) {
     $changeProps({
       bindDemoInput: {
         acVisible: false
+      },
       }
     })
     $changeVal({
