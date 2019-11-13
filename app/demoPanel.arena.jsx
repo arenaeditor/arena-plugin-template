@@ -24,7 +24,7 @@ export default class DemoPanel {
             </layout>
           </div>
           <div id="ac-interactive">
-            {/* <datacollapse 
+            <datacollapse 
               name="组件数据" 
               bind="chartData" 
               value={[
@@ -32,7 +32,7 @@ export default class DemoPanel {
                 ['类目2', 80],
                 ['类目3', 60],
               ]}
-            /> */}
+            />
             <collapse
               name="返回值绑定"
             >
