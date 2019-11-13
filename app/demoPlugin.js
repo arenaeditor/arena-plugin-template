@@ -15,6 +15,9 @@ export default class Demo extends ArenaPluginDOM {
 
   propWillUpdate() {
     this.dom.innerText = this.$arena.data.bindDemoInput;
+    // setInterval(() => {
+    //   this.$events.output('bindVoiceRes', Math.random())
+    // }, 1000)
   }
 
   onResizeEnd() {}

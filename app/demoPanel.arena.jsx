@@ -26,15 +26,22 @@ export default class DemoPanel {
           <div id="ac-interactive">
             {/* <datacollapse 
               name="组件数据" 
-              bind="series" 
+              bind="chartData" 
               value={[
                 ['类目1', 100],
                 ['类目2', 80],
                 ['类目3', 60],
-                ['类目4', 40],
-                ['类目5', 20],
               ]}
             /> */}
+            <collapse
+              name="返回值绑定"
+            >
+              <layout>
+                <bindselector
+                  name="bindVoiceRes"
+                />
+              </layout>
+            </collapse>
             <checkboxcodecollapse 
               name="组件数据" 
               title="组件数据" 
@@ -83,42 +90,7 @@ export default class DemoPanel {
                 isBind: true,
               }}
             />
-            <bindborder
-              bind="aa"
-              value={{
-                top: {
-                  width: 1,
-                  style: 'solid',
-                  color: '#d5d5d5',
-                  widthName: '上线宽',
-                },
-                right: {
-                  width: 1,
-                  style: 'solid',
-                  color: '#d5d5d5',
-                  widthName: '右线宽',
-                },
-                bottom: {
-                  width: 1,
-                  style: 'solid',
-                  color: '#d5d5d5',
-                  widthName: '下线宽',
-                },
-                left: {
-                  width: 1,
-                  style: 'solid',
-                  color: '#d5d5d5',
-                  widthName: '左线宽',
-                },
-                all: {
-                  width: 1,
-                  style: 'solid',
-                  color: '#d5d5d5',
-                  widthName: '线宽',
-                },
-                isBind: true,
-              }}
-            />
+            
           </div>
         </div>
       );
