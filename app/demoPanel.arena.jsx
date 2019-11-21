@@ -42,18 +42,44 @@ export default class DemoPanel {
                 />
               </layout>
             </collapse>
-            <checkboxcodecollapse 
+            <event 
               name="组件数据" 
-              title="组件数据" 
-              bind="seddries" 
-              value={[
+              eventOption={[
                 {
-                  checked: true,
-                  name: 'onValChange',
-                  code: ''
+                  label: '组件数据',
+                  options: [
+                    'onValChange',
+                    'onCompMounted',
+                    'onCompDestroyed',
+                  ],
+                },
+                {
+                  label: '键盘事件',
+                  options: [
+                    'onKeyDown',
+                    'onKeyUp',
+                  ],
+                },
+                {
+                  label: '组件事件',
+                  options: [
+                    'onBlur',
+                    'onFocus',
+                    'onToggle',
+                    'onSelectDel',
+                  ],
                 },
               ]}
             />
+            <layout title="时间限制">
+              <code
+                bind="round"
+                code="function round () {}"
+                funcName="round" 
+                args="date"
+              />
+            </layout>
+  
             <bindborder
               bind="aa"
               value={{
