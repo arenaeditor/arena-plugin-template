@@ -42,7 +42,7 @@ export default class DemoPanel {
                 />
               </layout>
             </collapse>
-            <event 
+            <events 
               name="组件数据" 
               eventOption={[
                 {
