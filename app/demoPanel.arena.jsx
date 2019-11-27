@@ -74,9 +74,8 @@ export default class DemoPanel {
             <layout title="时间限制">
               <code
                 bind="round"
-                code="function round () {}"
-                funcName="round" 
-                args="date"
+                value="function round (date) {}"
+                title="时间限制" // 可选，代码弹窗标题，默认组件编程
               />
             </layout>
   
