@@ -81,20 +81,34 @@ export default class DemoChart {
     const { schema, unit, value } = this.state;
     const { bindRadius } = this.props;
     return (
+      // 根组件需要有一个div作为根容器包裹，根据id来标识面板页号，目前最多支持两页，id如下
         <div 
-          id="demo" // 根组件需要有一个div作为根容器包裹
+          id="demo" 
         >
-          <layout
-            title="半径"
-          >
-            <input
-              bind="bindRadius"
-              value={value}
-              schema={schema}
-              unit={unit}
-              label="123"
-            />
-          </layout>
+          <div id="ac-element"> // 面板分页1
+            <layout
+              title="示例输入
+            >
+              <input
+                bind="bindDemoInput"
+                value={value}
+                schema={schema}
+              />
+            </layout>
+          </div>
+          <div id="ac-interactive"> // 面板分页2
+             <layout
+                title="半径"
+              >
+                <input
+                  bind="bindRadius"
+                  value={value}
+                  schema={schema}
+                  unit={unit}
+                  label="123"
+                />
+              </layout>
+          </div>
         <div>
     );
   }
@@ -130,19 +144,21 @@ export default function demoChart(props) {
     };
     return (
       <div 
-        id="demo" // 根组件需要有一个div作为根容器包裹
+        id="demo"
       >
-        <layout
-          title="半径"
-        >
-          <input
-            bind={bindRadius + "a"}
-            value={state.value}
-            schema={state.schema}
-            unit={state.unit}
-            label="123"
-          />
-        </layout>
+        <div id="ac-element">
+          <layout
+            title="半径"
+          >
+            <input
+              bind={bindRadius + "a"}
+              value={state.value}
+              schema={state.schema}
+              unit={state.unit}
+              label="123"
+            />
+          </layout>
+        </div>
       <div>
     );
 }
